@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using Newtonsoft.Json;
-using System.Configuration;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace AF.DAL
 {
@@ -28,8 +28,8 @@ namespace AF.DAL
 		{
 			var strFN = p.JsonPrefix + "_" + p.JsonTitle + "_" + p.JsonTimeline + ".json";
 			string path = Directory.GetCurrentDirectory();
-			p.FileNamePath = ConfigurationManager.AppSettings["JsonDir"] + p.JsonTimeline + @"\" + strFN;
-			p.DbFileNamePath = ConfigurationManager.AppSettings["JsonDir"] + p.JsonTimeline + @"\" + strFN;
+			p.FileNamePath = ManualProcessCanonical.StaticConfig.GetConnectionString("JsonDir") + p.JsonTimeline + @"\" + strFN;
+			p.DbFileNamePath = ManualProcessCanonical.StaticConfig.GetConnectionString("JsonDir") + p.JsonTimeline + @"\" + strFN;
 
 			StructureOutput n = new StructureOutput();
 

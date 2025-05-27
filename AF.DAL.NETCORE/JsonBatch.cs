@@ -1,13 +1,20 @@
 ﻿
-using System.Configuration;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 using System.Diagnostics;
 
 namespace AF.DAL
 {
     class JsonBatch
     {
-        
+        //public readonly IConfiguration _staticConfig;
+
+        //public JsonBatch(IConfiguration staticConfig)
+        //{
+        //    _staticConfig = staticConfig;
+        //}
+
         public Dictionary<string, dynamic> Canonical { get; set; }
         public static Dictionary<string, dynamic> GetColumns(string Field)
         {
@@ -123,14 +130,14 @@ namespace AF.DAL
 
         public static string EncryptGPG(string strPath, string fileName, string dstPath)
         {
-            if (Convert.ToBoolean(ConfigurationManager.AppSettings["ServiceGPG_Enabled"]))
+            if (Convert.ToBoolean(ManualProcessCanonical.StaticConfig.GetConnectionString("ServiceGPG_Enabled")))
             {
 
                 var fullPath = strPath + fileName;
-                IEncryptionService encryptionService = new EncryptionService(@ConfigurationManager.AppSettings["ServiceGPG"]); //C:\Program Files\GNU\GnuPG\pub\gpg2.exe
+                IEncryptionService encryptionService = new EncryptionService(ManualProcessCanonical.StaticConfig.GetConnectionString("ServiceGPG")); //C:\Program Files\GNU\GnuPG\pub\gpg2.exe
 
                 //  Change the parameters to your private key's keyuserid and input/output files.
-                var encryptedFile = encryptionService.EncryptFile(@ConfigurationManager.AppSettings["KeyID_GPG"], fullPath, fullPath + ".gpg");
+                var encryptedFile = encryptionService.EncryptFile(ManualProcessCanonical.StaticConfig.GetConnectionString("KeyID_GPG"), fullPath, fullPath + ".gpg");
                 //var encryptedFile = encryptionService.DecryptFile(@"F:\LicAndPassport.PDF.pgp", @"F:\LicAndPassport.pdf");
 
                 Console.WriteLine(encryptedFile.Name);
@@ -150,7 +157,7 @@ namespace AF.DAL
                 }
                 catch (Exception e)
                 {
-                    System.IO.File.WriteAllText(@ConfigurationManager.AppSettings["WebLogs"], e.ToString());
+                    System.IO.File.WriteAllText(ManualProcessCanonical.StaticConfig.GetConnectionString("WebLogs"), e.ToString());
 
                     return e.ToString();// Console.WriteLine(e.ToString());
                 }
