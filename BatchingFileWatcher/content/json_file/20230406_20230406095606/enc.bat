@@ -1,0 +1,1 @@
+gpg --batch --recipient inandjo --encrypt-files *.json

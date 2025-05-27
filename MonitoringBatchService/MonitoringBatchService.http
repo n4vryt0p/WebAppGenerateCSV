@@ -1,0 +1,6 @@
+@MonitoringBatchService_HostAddress = http://localhost:5038
+
+GET {{MonitoringBatchService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

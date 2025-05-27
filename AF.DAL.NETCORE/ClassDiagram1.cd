@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="AF.DAL.CustomerID" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oGO4ZQqawo0FBKbGBVjQjIg0CAxIXNU2+gHghTSxICA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Customer_Identification" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIIAAABIAAAAAAAAAQAAAAAAAAAQAAAgAAAAQ=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.CustomerLinkID" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAJAAAAAAAEAAAAAAAAAAAQAAADAAAA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.CustomerPolicyLink" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAQAAAAEAAAACAASAAAgICAAAA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Intermediaries" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEIZIAAgAAIAACAAAAAQGEgAAAKTAAAA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Intermediary_Policy_Link" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAQAAAAAQAAAAAASAAAAICAAAA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Product" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAIAQCAAAAABAAAACAAAA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.ProductSource" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Operation" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEoAAAAQAAIAIAACAOAACAAIAQAEIDwICgAAAACAACg=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Policies" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>0EghAAAIAgQIgKGCQEACAgEQC1CAAEQAAwIgEgCAQIA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.ExtractionCanonicalDAO" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAABkAEAAAAAgAUAAAAACAAAEAAIAAAAAwAAA=</HashCode>
+      <FileName>9CanonicalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.BjConfigDAO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACAAgAQAAAABgBAAAIEAAAAAAEAABAABAAI=</HashCode>
+      <FileName>BjConfigDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AF.DAL.CanonicalDelta" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAEIAQAAQAAAAAWAIAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>CanonicalDelta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.ClaimDAO" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAABAQAAAAAAAACAAAAA=</HashCode>
+      <FileName>ClaimDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.ConfigLogsDAO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAIAAACACAAAAAAABgBgAAAkAAAAAAEAAAQAAAAI=</HashCode>
+      <FileName>ConfigLogsDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AF.DAL.InputRequestParam">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACACAAAAAAAAAAAAIAABAAAAAAAAAAAAICAAAAAAAE=</HashCode>
+      <FileName>ExtractionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.CreateInitiateJsonFile">
+    <Position X="0.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExtractionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.StructureOutput" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAgEAAAAABAAAAAAAAhAAAA=</HashCode>
+      <FileName>ExtractionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.ExtractionLog" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAACgCAADQAQIAAAAAAgAAAAAAhABAABCEA=</HashCode>
+      <FileName>ExtractionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.FinTrxDAO" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAIAAAAAEAQAAAAA=</HashCode>
+      <FileName>FinTrxDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.JsonFileDAL" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJAAAAAAAAAAAAAAIAAgAAAAAAQAAAAAAAAAgAAAE=</HashCode>
+      <FileName>JsonFileDAL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.MenuDAO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgBAIgAACCAhAAAAAABgFABAAEAABAACkAAgAEAAAY=</HashCode>
+      <FileName>MenuDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AF.DAL.MenuParent" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>MenuParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.MenuChildren" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.PartiesDAO" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAACAQQIAAAJAwAAIgCCQAAACIgACAAQIIgQAgA=</HashCode>
+      <FileName>PartiesDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.PartyRequestParam" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAACAAAAAAAQAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PartiesDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.PartyDetilRequestParam" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PartiesDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.PolicyDAO" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQCAIAAgAIAAAIBABgCKEAAAAAAAAEEAAIAAAA=</HashCode>
+      <FileName>PolicyDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.ProducerDAO" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACIAAAQAAAQAQAAAAAAQAAIQAAAgAAAAAAAgAACAA=</HashCode>
+      <FileName>ProducerDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.RoleDAO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIgAACAggAAAAAABghAAAAEAAAAAAEAAkAACQAI=</HashCode>
+      <FileName>RoleDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AF.DAL.SharedUtils" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAEgAAKIAAAEAlRAJAgAAAAAAAAgAAAgAEI=</HashCode>
+      <FileName>SharedUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.TaskProcessLogDAO" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TaskProcessLogDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.ExtractionLog2" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAACgCAADQAQIAAAAAAgAAAAAAhABAABCEA=</HashCode>
+      <FileName>TaskProcessLogDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.TaskSchedulerDAO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgIIhACCAAgAAABCABoBAogAEAAAAAAEAAhACBAQM=</HashCode>
+      <FileName>TaskSchedulerDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AF.DAL.UserDAO" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAIoAACAAAQAAAAABgBgAAAFAAAAAAEAAgAAAAAI=</HashCode>
+      <FileName>UserDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AF.DAL.Model.ClaimModel" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ClaimModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Model.FinTrxModel" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\FinTrxModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Model.PartyModel" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PartyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Model.PartyDetail" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PartyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Model.PolicyModel" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PolicyModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AF.DAL.Model.ProducerModel" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ProducerModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

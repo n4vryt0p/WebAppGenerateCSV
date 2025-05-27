@@ -1,0 +1,1 @@
+gpg --output 054_CUSTOMERS_20230330_20230330154612.json.gpg --recipient inandjo --encrypt 054_CUSTOMERS_20230330_20230330154612.json

@@ -1,0 +1,44 @@
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "Settings": {
+        "WatchDirectorry": "C:\\Users\\Amri Permana\\Downloads\\Project\\BatchFileJson",
+        "DestinationDirectory": "C:\\Users\\Amri Permana\\Downloads\\Project\\CopyBatchFile",
+        //"BarchFilePath": "Ax@t0wer.2024.pRd.$",
+        "BarchFilePath": "C:\\Users\\Amri Permana\\Downloads\\Project\\BatchFileJson\\dec.bat",
+        "LogDirectory": "C:\\Users\\amri permana\\Downloads\\Project\\log",
+        //"Emailsend": "amri.permana@axa-mandiri.co.id;irvan.roesly@axa-mandiri.co.id;edi.setiyawan@axa-mandiri.co.id;bobby.mandoya@axa-mandiri.co.id;harry.sihombing@axa-mandiri.co.id"
+        "Emailsend": "amri.permana@axa-mandiri.co.id",
+        "Emailsendadmin": "amri.permana@axa-mandiri.co.id;",
+        "BaseAddress": "http://wrcapp09/",
+        "Baseapi": "gfcc_api/api/sendmail/v2/multi/",
+        "KeyDec": "Ax@t0wer.2025.pRd.$"
+
+    },
+    "AllowedHosts": "*",
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=wrdsql09;database=STG_DB;User Id=gfcc; Password=A^c9D2,6-x%KmXL)QT.`!R;Integrated Security=false; MultipleActiveResultSets=true; Encrypt=false",
+        "DefaultConnectiongfcct": "Server=wrdsql09;database=GFCC_WEB;User Id=gfcc; Password=A^c9D2,6-x%KmXL)QT.`!R;Integrated Security=false; MultipleActiveResultSets=true; Encrypt=false"
+    },
+    "ExeSettings": {
+        "ExePath": "C:\\Users\\amri permana\\Downloads\\Project\\KumpluanExe\\FileGenerate\\BatchingFileWatcher.exe",
+        "ExePathsourceFolder": "C:\\Users\\amri permana\\Downloads\\batching",
+        "ExePathdestinationFolder": "C:\\Users\\amri permana\\Downloads\\Inbound\\",
+        "ExePathdestinationFolderout": "C:\\Users\\amri permana\\Downloads\\outbound\\",
+        "serviceoutbound": "E:\\UDM\\bin\\Netreveal_PROD_AMFS.bat",
+        //Delay 10 menit 60000
+        //Delay 1 menit 6000
+        "DelayTime": "5800",
+        "TimeSendStatus": "1440"
+    },
+    "ElasticApm": {
+        "SecretToken": "",
+        "ServerUrls": "http://wrcapp12:8200",
+        "ServiceName": "GFCC-API-MonitoringBatchService", //allowed characters: a-z, A-Z, 0-9, -, _, and space. Default is the entry assembly of the application
+        "Environment": "Development" // Set the service environment
+    }
+}
