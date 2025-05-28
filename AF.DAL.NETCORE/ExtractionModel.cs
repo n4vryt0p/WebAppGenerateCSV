@@ -27,16 +27,18 @@ namespace AF.DAL
 		public CreateInitiateJsonFile(InputRequestParam p) : base()
 		{
 			var strFN = p.JsonPrefix + "_" + p.JsonTitle + "_" + p.JsonTimeline + ".json";
-			string path = Directory.GetCurrentDirectory();
-			p.FileNamePath = ManualProcessCanonical.StaticConfig.GetConnectionString("JsonDir") + p.JsonTimeline + @"\" + strFN;
-			p.DbFileNamePath = ManualProcessCanonical.StaticConfig.GetConnectionString("JsonDir") + p.JsonTimeline + @"\" + strFN;
+			var path = Directory.GetCurrentDirectory();
+			p.FileNamePath = SharedUtils.StaticConfig.GetConnectionString("JsonDir") + p.JsonTimeline + @"\" + strFN;
+			p.DbFileNamePath = SharedUtils.StaticConfig.GetConnectionString("JsonDir") + p.JsonTimeline + @"\" + strFN;
 
-			StructureOutput n = new StructureOutput();
+			var n = new StructureOutput
+            {
+                fileName = "{" + p.JsonTitle + "}",
+                lastRecNo = p.JsonRecNum.ToString(),
+                NbErrorLIL = "0"
+            };
 
-			n.fileName = "{" + p.JsonTitle + "}";
-			n.lastRecNo = p.JsonRecNum.ToString();
-			n.NbErrorLIL = "0";
-			if (p.CanonicalModelVersion != "")
+            if (p.CanonicalModelVersion != "")
 			{
 				n.CanonicalModel_Version = p.CanonicalModelVersion;
 			}
@@ -47,7 +49,7 @@ namespace AF.DAL
 
 			n.columns = p.GetColumns;
 			n.data = p.GetInitiateData;
-			string json = JsonConvert.SerializeObject(n);
+			var json = JsonConvert.SerializeObject(n);
 			System.IO.File.WriteAllText(p.FileNamePath, json);
 		}
 	}
@@ -82,15 +84,15 @@ namespace AF.DAL
 		public string CountPath { get; set; }
 		public static List<ExtractionLog> GetAllLog()
 		{
-			List<ExtractionLog> lgs = new List<ExtractionLog>();
-			int rCntr = 0;
+			var lgs = new List<ExtractionLog>();
+			var rCntr = 0;
 			var sqlcom = "select * from [WebApp].[TaskProcessLog] ;";
-			using (SqlDataReader results = SharedUtils.ExecuteSqlCommand(sqlcom, SharedUtils.GetDSN()))
+			using (var results = SharedUtils.ExecuteSqlCommand(sqlcom, SharedUtils.GetDSN()))
 			{
 				while (results.Read())
 				{
 					rCntr++;
-					ExtractionLog lg = new ExtractionLog();
+					var lg = new ExtractionLog();
 					lg.ID = results["ID"].ToString();
 					lg.TaskName = (!results.IsDBNull(results.GetOrdinal("TaskName"))) ? results["TaskName"].ToString() : "";
 					lg.ExeTime = Convert.ToDateTime(results["ExeTime"]);
@@ -115,18 +117,18 @@ namespace AF.DAL
 		public static List<ExtractionLog> GetAllLog(string range)
 		{
 			#region ParserString
-			string condition = AF.DAL.SharedUtils.GetRangeCondition(range);
+			var condition = AF.DAL.SharedUtils.GetRangeCondition(range);
 			#endregion
 			List<ExtractionLog> lgs = new List<ExtractionLog>();
-			int rCntr = 0;
+			var rCntr = 0;
 			var sqlcom = "select * from [WebApp].[TaskProcessLog] " + condition;
 			var constring = AF.DAL.SharedUtils.GetDSN();
-			using (SqlDataReader results = SharedUtils.ExecuteSqlCommand(sqlcom, constring))
+			using (var results = SharedUtils.ExecuteSqlCommand(sqlcom, constring))
 			{
 				while (results.Read())
 				{
 					rCntr++;
-					ExtractionLog lg = new ExtractionLog();
+					var lg = new ExtractionLog();
 					lg.ID = results["ID"].ToString();
 					lg.TaskName = (!results.IsDBNull(results.GetOrdinal("TaskName"))) ? results["TaskName"].ToString() : "";
 					lg.ExeTime = Convert.ToDateTime(results["ExeTime"]);
@@ -162,7 +164,7 @@ namespace AF.DAL
 		}
 		public async Task<int> LogItAsync(ExtractionLog l)
 		{
-			string vsql = "";
+			var vsql = "";
 			vsql += "INSERT INTO WebApp.TaskProcessLog ";
 			vsql += "(TaskName,TaskGroup,FromDate,ToDate,ExeTime,EndTime,SourceRows, ";
 			vsql += "ExtractedRows,ExtractionStatus,FileTransferStatus,ExceptionThrown,FilePath) ";
@@ -209,7 +211,7 @@ namespace AF.DAL
 		}
 		public static void LogIt(ExtractionLog l)
 		{
-			string vsql = "";
+			var vsql = "";
 			vsql += "INSERT INTO WebApp.TaskProcessLog ";
 			vsql += "(TaskName,TaskGroup,FromDate,ToDate,ExeTime,EndTime,SourceRows, ";
 			vsql += "ExtractedRows,ExtractionStatus,FileTransferStatus,ExceptionThrown,FilePath) ";
@@ -220,9 +222,9 @@ namespace AF.DAL
 			vsql += " VALUES (@requestID,@txnLogID,@clientID,@clientIP,@nodeIP,@contentType,@urlPath,@trxRq_DT,@fileSizeRq,@fileRq,@generateDT,@CountFile)";
 			
 
-			using (SqlConnection con = new SqlConnection(SharedUtils.GetDSN()))
+			using (var con = new SqlConnection(SharedUtils.GetDSN()))
 			{
-				using (SqlCommand cmd = new SqlCommand(vsql, con))
+				using (var cmd = new SqlCommand(vsql, con))
 				{
 					cmd.Parameters.AddWithValue("@TaskName", l.TaskName);
 					cmd.Parameters.AddWithValue("@TaskGroup", "CANONICAL");
@@ -283,13 +285,13 @@ namespace AF.DAL
 
 		public static void LogOk(string okFile,string pathRs,string lenght)
 		{
-            string vsql = "";
+            var vsql = "";
             vsql += "INSERT INTO LIL.FileMonitoring ";
             vsql += "(requestID ,txnLogID,clientID,clientIP,nodeIP,contentType,urlPath,trxRq_DT,fileSizeRq,fileRq,generateDT,CountFile) ";
             vsql += " VALUES (@requestID,@txnLogID,@clientID,@clientIP,@nodeIP,@contentType,@urlPath,@trxRq_DT,@fileSizeRq,@fileRq,@generateDT,@CountFile)";
-			using (SqlConnection con = new SqlConnection(SharedUtils.GetDSN()))
+			using (var con = new SqlConnection(SharedUtils.GetDSN()))
 			{
-				using (SqlCommand cmd = new SqlCommand(vsql, con))
+				using (var cmd = new SqlCommand(vsql, con))
 				{
                     cmd.Parameters.AddWithValue("@requestID", "Batch (UDM)");
                     cmd.Parameters.AddWithValue("@txnLogID", "OkFile");

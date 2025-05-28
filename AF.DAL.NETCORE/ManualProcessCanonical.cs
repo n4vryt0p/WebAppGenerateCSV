@@ -5,27 +5,12 @@ namespace AF.DAL
 {
 	public class ManualProcessCanonical
 	{
-        public static IConfiguration StaticConfig { get; private set; }
         //private static string strDataPeriod = " MODIFIED_DATE >= convert(datetime,'2021-07-13 16:32:00.317') or Create_DATE >= convert(datetime,'2021-07-13 16:32:00.317')  ";
         private static string strDataPeriod = @"(convert(date,Create_DATE) >= convert(date,convert(char(8),@FromDt)) and convert(date,Create_DATE) <= convert(date,convert(char(8),ToDt)))
 			or (convert(date,MODIFIED_DATE) >= convert(date,convert(char(8),@FromDt)) and convert(date,MODIFIED_DATE) <= convert(date,convert(char(8),ToDt)))";
 
         private static bool extractStatus = false;
 		private static string orgUnit = "054";
-        private static string? jsonDir;
-        private static string? jsonDst;
-        private static string? KeyID_GPG;
-        private static string? WebLogs;
-
-        public ManualProcessCanonical(IConfiguration configuration)
-        {
-            StaticConfig = configuration;
-            jsonDir = StaticConfig.GetConnectionString("JsonDir");
-            jsonDst = StaticConfig.GetConnectionString("JsonDst");
-            KeyID_GPG = StaticConfig.GetConnectionString("KeyID_GPG");
-            KeyID_GPG = StaticConfig.GetConnectionString("WebLogs");
-
-        }
 
         public static bool extractedStatus()
         {
@@ -36,7 +21,7 @@ namespace AF.DAL
 
         public static string[] GetPeriodByID(int ID) {
 			string[] vRet = new string[2];
-			string str = SharedUtils.GetDataSingleValue(@"SELECT concat(FromDate,',',ToDate) as period FROM [WebApp].[ManualExe] where ID= " + ID.ToString() + ";", SharedUtils.GetDSN());
+			string str = SharedUtils.GetDataSingleValue(@"SELECT concat(FromDate,',',ToDate) as period FROM [WebApp].[ManualExe] where ID= " + ID + ";", SharedUtils.GetDSN());
 			string[] res = str.Split(',');
 			vRet[0] = res[0];vRet[1] = res[1];
 			return vRet;
@@ -107,14 +92,14 @@ namespace AF.DAL
 
 				var runTimestamp = now.ToString("yyyyMMddHHmmss");
 				
-				if (!Directory.Exists(jsonDir + timeLine + @"\"))
+				if (!Directory.Exists(SharedUtils.StaticConfig.GetConnectionString("JsonDir") + timeLine + @"\"))
 				{
-					DirectoryInfo folder = Directory.CreateDirectory(jsonDir + timeLine + @"\");
+					DirectoryInfo folder = Directory.CreateDirectory(SharedUtils.StaticConfig.GetConnectionString("JsonDir") + timeLine + @"\");
 				}
 
-				if (!Directory.Exists(jsonDst + timeLine + @"\"))
+				if (!Directory.Exists(SharedUtils.StaticConfig.GetConnectionString("JsonDst") + timeLine + @"\"))
 				{
-					DirectoryInfo folder = Directory.CreateDirectory(jsonDst + timeLine + @"\");
+					DirectoryInfo folder = Directory.CreateDirectory(SharedUtils.StaticConfig.GetConnectionString("JsonDst") + timeLine + @"\");
 				}
                 //Testing 
                 var conSourceData = SharedUtils.GetDSN();
@@ -148,7 +133,7 @@ namespace AF.DAL
 
 						var fullName = orgUnit + "_" + val.Value + "_" + timeLine + ".json";
 						
-                        var nameEncrypt = JsonBatch.EncryptCMD(jsonDir + timeLine + @"\", fullName, jsonDir + timeLine + @"\", KeyID_GPG);
+                        var nameEncrypt = JsonBatch.EncryptCMD(SharedUtils.StaticConfig.GetConnectionString("JsonDir") + timeLine + @"\", fullName, SharedUtils.StaticConfig.GetConnectionString("JsonDir") + timeLine + @"\", SharedUtils.StaticConfig.GetConnectionString("KeyID_GPG"));
 						//var nameEncrypt = JsonBatch.EncryptCMDTest(@ConfigurationManager.AppSettings["JsonDir"] + timeLine + @"\", fullName);
 
 						//SharedUtils.SendEmailNotification("Customer-Canonical Data Extraction", "Successfull", m.Email);
@@ -165,20 +150,20 @@ namespace AF.DAL
 			
 				var okFile = orgUnit + "_" + timeLine + ".ok";
 				//Baru ditambahkann
-				var foals = Directory.CreateDirectory(jsonDir + timeLine +  @"\");
+				var foals = Directory.CreateDirectory(SharedUtils.StaticConfig.GetConnectionString("JsonDir") + timeLine +  @"\");
 				var pathRs = foals + okFile;
                 
-                DirectoryInfo d = new DirectoryInfo(jsonDir + timeLine + @"\"); //Directory Generate Json File
+                DirectoryInfo d = new DirectoryInfo(SharedUtils.StaticConfig.GetConnectionString("JsonDir") + timeLine + @"\"); //Directory Generate Json File
 				FileInfo[] Files = d.GetFiles("*.json");
 
-				System.IO.File.WriteAllText(jsonDir + timeLine + @"\" + okFile, Files.Length.ToString());
+				System.IO.File.WriteAllText(SharedUtils.StaticConfig.GetConnectionString("JsonDir") + timeLine + @"\" + okFile, Files.Length.ToString());
                 //System.IO.File.Copy(ConfigurationManager.AppSettings["JsonDir"] + okFile, @ConfigurationManager.AppSettings["JsonDst"] + okFile, true);
                 ExtractionLog.LogOk(okFile, pathRs, Files.Length.ToString());
 				return true;
             }
 			catch (Exception e){
 
-				System.IO.File.WriteAllText(WebLogs, e.ToString());
+				System.IO.File.WriteAllText(SharedUtils.StaticConfig.GetConnectionString("WebLogs"), e.ToString());
 				//extractStatus = l.ExtractionStatus = false;
 				//l.ExceptionThrown += e.ToString();
 				//SharedUtils.SendEmailNotification("Customer Extraction", "Failed, " + e.ToString(), m.Email);
@@ -642,7 +627,7 @@ namespace AF.DAL
 		{
 			Console.WriteLine("___________________________");
 			Console.WriteLine("Start Extract Data {" + title + "} from DB!");
-			Console.WriteLine("Path: " + jsonDir);
+			Console.WriteLine("Path: " + SharedUtils.StaticConfig.GetConnectionString("JsonDir"));
 
 			var conSourceData = SharedUtils.GetDSN();
 
@@ -883,7 +868,7 @@ namespace AF.DAL
 
 				Console.WriteLine(e.ToString());
 
-				File.AppendAllText(WebLogs, e.ToString());
+				File.AppendAllText(SharedUtils.StaticConfig.GetConnectionString("WebLogs"), e.ToString());
 
 				l.ExtractionStatus = false;
 				l.ExceptionThrown = e.ToString() + Environment.NewLine;

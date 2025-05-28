@@ -56,53 +56,53 @@ namespace MonitoringBatchService.Services
             await _databaseService.UpdateRecordsAsyncruls(id, status);
         }
 
-        //public async Task ProcessOkFiles()
-        //{
-        //    var okFiles = _fileService.GetFilesa(_destinationFolder ?? string.Empty, "*.ok");
-        //    if (okFiles.Length == 0)
-        //    {
-        //        _log.Info("No .ok files found.");
-        //        return;
-        //    }
+        public async Task ProcessOkFiles()
+        {
+            var okFiles = _fileService.GetFilesa(_destinationFolder ?? string.Empty, "*.ok");
+            if (okFiles.Length == 0)
+            {
+                _log.Info("No .ok files found.");
+                return;
+            }
 
-        //    foreach (var file in okFiles)
-        //    {
-        //        string filenameok = file.Name.Replace(".ok", "");
-        //        await _databaseService.UpdateFileMonitoringtriger(filenameok);
-        //        string sourcePath = Path.Combine(_destinationFolder ?? "", filenameok);
-        //        string targetPath = Path.Combine(_destinationFolderout ?? "", filenameok);
+            foreach (var file in okFiles)
+            {
+                string filenameok = file.Name.Replace(".ok", "");
+                await _databaseService.UpdateFileMonitoringtriger(filenameok);
+                string sourcePath = Path.Combine(_destinationFolder ?? "", filenameok);
+                string targetPath = Path.Combine(_destinationFolderout ?? "", filenameok);
 
-        //        if (_fileService.FileExists(sourcePath))
-        //        {
-        //            _fileService.CopyFile(sourcePath, targetPath, overwrite: true);
-        //        }
-        //    }
-        //    _log.Info("Processed .ok files.");
-        //}
+                if (_fileService.FileExists(sourcePath))
+                {
+                    _fileService.CopyFile(sourcePath, targetPath, overwrite: true);
+                }
+            }
+            _log.Info("Processed .ok files.");
+        }
 
-        //public async Task ProcessGpgFiles()
-        //{
-        //    var gpgFiles = _fileService.GetFilesa(_destinationFolder ?? string.Empty, "*.json.gpg");
-        //    if (gpgFiles.Length == 0)
-        //    {
-        //        _log.Info("No .json.gpg files found.");
-        //        return;
-        //    }
+        public async Task ProcessGpgFiles()
+        {
+            var gpgFiles = _fileService.GetFilesa(_destinationFolder ?? string.Empty, "*.json.gpg");
+            if (gpgFiles.Length == 0)
+            {
+                _log.Info("No .json.gpg files found.");
+                return;
+            }
 
-        //    foreach (var file in gpgFiles)
-        //    {
-        //        string filename = file.Name.Replace(".gpg", "");
-        //        await _databaseService.UpdateFileMonitoringtriger(filename);
-        //        string sourcePath = Path.Combine(_destinationFolder ?? "", filename);
-        //        string targetPath = Path.Combine(_destinationFolderout ?? "", filename);
+            foreach (var file in gpgFiles)
+            {
+                string filename = file.Name.Replace(".gpg", "");
+                await _databaseService.UpdateFileMonitoringtriger(filename);
+                string sourcePath = Path.Combine(_destinationFolder ?? "", filename);
+                string targetPath = Path.Combine(_destinationFolderout ?? "", filename);
 
-        //        if (_fileService.FileExists(sourcePath))
-        //        {
-        //            _fileService.CopyFile(sourcePath, targetPath, overwrite: true);
-        //        }
-        //    }
-        //    _log.Info("Processed .json.gpg files.");
-        //}
+                if (_fileService.FileExists(sourcePath))
+                {
+                    _fileService.CopyFile(sourcePath, targetPath, overwrite: true);
+                }
+            }
+            _log.Info("Processed .json.gpg files.");
+        }
 
         public async Task SendEmail()
         {

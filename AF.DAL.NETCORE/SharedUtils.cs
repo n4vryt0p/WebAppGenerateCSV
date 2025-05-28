@@ -1,14 +1,29 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using System.Data;
 
 namespace AF.DAL
 {
-	public class SharedUtils
+	public interface ISharedUtils
 	{
-		public static string GetDSN()
+
+	}
+
+    public class SharedUtils : ISharedUtils
+    {
+		private readonly IConfiguration _configuration;
+        public static IConfiguration StaticConfig { get; private set; }
+        public SharedUtils(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            StaticConfig = configuration;
+        }
+
+
+        public static string GetDSN()
 		{
-            return ConfigurationManager.ConnectionStrings["GFCCTWEBContext"].ConnectionString;
+            return StaticConfig.GetConnectionString("DefaultConnectiongfcct");
 		}
 		//public static string GetDSN(string db, string source = "wrdsql09", string dbuser = "gfcc", string dbpass = "A^c9D2,6-x%KmXL)QT.`!R;")
 		//{
@@ -21,17 +36,17 @@ namespace AF.DAL
 
 		public static string GetDSNGFCC()
 		{
-            return ConfigurationManager.ConnectionStrings["GFCCTContext"].ConnectionString;
+            return StaticConfig.GetConnectionString("GfccConnection");
         }
 
         public static string GetDSN2()
 		{
-            return ConfigurationManager.ConnectionStrings["GFCCTSTGContext"].ConnectionString;
+            return StaticConfig.GetConnectionString("DefaultConnection");
 		}
 
         public static string GetDSNApp09()
 		{
-			return ConfigurationManager.ConnectionStrings["GFCCTWEB09Context"].ConnectionString;
+			return StaticConfig.GetConnectionString("GFCCTWEB09Context");
 		}
 	
 		public static string SqlBuilder(string sqlCommand, string[] inputParam, string sortBy)

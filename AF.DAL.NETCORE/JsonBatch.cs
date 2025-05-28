@@ -130,14 +130,14 @@ namespace AF.DAL
 
         public static string EncryptGPG(string strPath, string fileName, string dstPath)
         {
-            if (Convert.ToBoolean(ManualProcessCanonical.StaticConfig.GetConnectionString("ServiceGPG_Enabled")))
+            if (Convert.ToBoolean(SharedUtils.StaticConfig.GetConnectionString("ServiceGPG_Enabled")))
             {
 
                 var fullPath = strPath + fileName;
-                IEncryptionService encryptionService = new EncryptionService(ManualProcessCanonical.StaticConfig.GetConnectionString("ServiceGPG")); //C:\Program Files\GNU\GnuPG\pub\gpg2.exe
+                IEncryptionService encryptionService = new EncryptionService(SharedUtils.StaticConfig.GetConnectionString("ServiceGPG")); //C:\Program Files\GNU\GnuPG\pub\gpg2.exe
 
                 //  Change the parameters to your private key's keyuserid and input/output files.
-                var encryptedFile = encryptionService.EncryptFile(ManualProcessCanonical.StaticConfig.GetConnectionString("KeyID_GPG"), fullPath, fullPath + ".gpg");
+                var encryptedFile = encryptionService.EncryptFile(SharedUtils.StaticConfig.GetConnectionString("KeyID_GPG"), fullPath, fullPath + ".gpg");
                 //var encryptedFile = encryptionService.DecryptFile(@"F:\LicAndPassport.PDF.pgp", @"F:\LicAndPassport.pdf");
 
                 Console.WriteLine(encryptedFile.Name);
@@ -157,7 +157,7 @@ namespace AF.DAL
                 }
                 catch (Exception e)
                 {
-                    System.IO.File.WriteAllText(ManualProcessCanonical.StaticConfig.GetConnectionString("WebLogs"), e.ToString());
+                    System.IO.File.WriteAllText(SharedUtils.StaticConfig.GetConnectionString("WebLogs"), e.ToString());
 
                     return e.ToString();// Console.WriteLine(e.ToString());
                 }
