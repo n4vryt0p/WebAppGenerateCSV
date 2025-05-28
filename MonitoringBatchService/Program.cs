@@ -7,16 +7,11 @@ using Elastic.Apm.NetCoreAll;
 using log4net;
 using log4net.Config;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using MonitoringBatchService;
 using MonitoringBatchService.Data;
 using MonitoringBatchService.Models;
 using MonitoringBatchService.Services;
 using System.Net;
-using System.Reflection;
-
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel((context, options) =>
@@ -27,6 +22,7 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 //builder.Configuration.AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true);
 //builder.Configuration.AddXmlFile("App.config", optional: true, reloadOnChange: true);
 var cfg = builder.Configuration;
+builder.Services.AddSingleton<SharedUtils>();
 _ = new SharedUtils(cfg);
 
 builder.Services.AddDbContextFactory<GfccstgDbContext>(opt =>

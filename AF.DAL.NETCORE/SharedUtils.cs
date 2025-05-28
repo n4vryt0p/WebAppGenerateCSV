@@ -5,12 +5,7 @@ using System.Data;
 
 namespace AF.DAL
 {
-	public interface ISharedUtils
-	{
-
-	}
-
-    public class SharedUtils : ISharedUtils
+    public class SharedUtils
     {
 		//private readonly IConfiguration _configuration;
         public static IConfiguration StaticConfig { get; private set; }
