@@ -12,11 +12,11 @@ namespace AF.DAL
 
     public class SharedUtils : ISharedUtils
     {
-		private readonly IConfiguration _configuration;
+		//private readonly IConfiguration _configuration;
         public static IConfiguration StaticConfig { get; private set; }
         public SharedUtils(IConfiguration configuration)
         {
-            _configuration = configuration;
+            //_configuration = configuration;
             StaticConfig = configuration;
         }
 

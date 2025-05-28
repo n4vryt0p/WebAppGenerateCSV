@@ -1,18 +1,19 @@
-using log4net;
-using log4net.Config;
-using MonitoringBatchService.Data;
-using MonitoringBatchService.Services;
-using Microsoft.Extensions.Logging;
-using System.Reflection;
-using MonitoringBatchService.Models;
-using Microsoft.EntityFrameworkCore;
-using MonitoringBatchService;
-using System.Net;
+using AF.DAL;
 using Elastic.Apm.AspNetCore;
-using Elastic.Apm.NetCoreAll;
 using Elastic.Apm.AspNetCore.DiagnosticListener;
 using Elastic.Apm.DiagnosticSource;
 using Elastic.Apm.EntityFrameworkCore;
+using Elastic.Apm.NetCoreAll;
+using log4net;
+using log4net.Config;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using MonitoringBatchService;
+using MonitoringBatchService.Data;
+using MonitoringBatchService.Models;
+using MonitoringBatchService.Services;
+using System.Net;
+using System.Reflection;
 
 
 
@@ -24,8 +25,9 @@ builder.WebHost.ConfigureKestrel((context, options) =>
 });
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 //builder.Configuration.AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true);
-builder.Configuration.AddXmlFile("App.config", optional: true, reloadOnChange: true);
+//builder.Configuration.AddXmlFile("App.config", optional: true, reloadOnChange: true);
 var cfg = builder.Configuration;
+_ = new SharedUtils(cfg);
 
 builder.Services.AddDbContextFactory<GfccstgDbContext>(opt =>
 {
